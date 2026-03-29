@@ -1,0 +1,18 @@
+<div class="block-meu-dashboard">
+    <h5 class="mb-3">{{title}}</h5>
+
+    <div class="mb-3">
+        <h6>{{#str}}metrics, block_meu_dashboard{{/str}}</h6>
+        <div id="block-meu-dashboard-metrics">{{metricsloading}}</div>
+    </div>
+
+    <div class="mb-3">
+        <h6>{{#str}}messages, block_meu_dashboard{{/str}}</h6>
+        <div id="block-meu-dashboard-messages">{{messagesloading}}</div>
+    </div>
+
+    <div class="mb-1">
+        <h6>{{#str}}chart, block_meu_dashboard{{/str}}</h6>
+        <div id="block-meu-dashboard-chart" data-empty-text="{{emptylabel}}">{{chartloading}}</div>
+    </div>
+</div>
