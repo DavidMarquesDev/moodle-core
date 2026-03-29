@@ -56,7 +56,7 @@ class block_meu_dashboard extends block_base
      * @return stdClass
      * @author David <github.com/DavidMarquesDev>
      */
-    public function get_content(): stdClass
+    public function get_content(): \stdClass
     {
         global $OUTPUT, $PAGE, $USER;
 
@@ -65,7 +65,7 @@ class block_meu_dashboard extends block_base
         }
 
         if (!isloggedin() || isguestuser()) {
-            $this->content = new stdClass();
+            $this->content = new \stdClass();
             $this->content->text = $OUTPUT->notification(
                 get_string('loginrequired', 'block_meu_dashboard'),
                 notification::NOTIFY_INFO
@@ -86,7 +86,7 @@ class block_meu_dashboard extends block_base
             'userid' => (int)$USER->id,
         ]);
 
-        $this->content = new stdClass();
+        $this->content = new \stdClass();
         $this->content->text = $OUTPUT->render_from_template('block_meu_dashboard/dashboard', $context);
         $this->content->footer = '';
 

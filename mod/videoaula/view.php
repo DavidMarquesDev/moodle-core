@@ -1,6 +1,9 @@
 <?php
 declare(strict_types=1);
 
+use core\output\html_writer;
+use core\url;
+
 require('../../config.php');
 
 $id = optional_param('id', 0, PARAM_INT);
@@ -17,7 +20,8 @@ if ($id) {
 }
 
 require_login($course, true, $cm);
-$context = context_module::instance($cm->id);
+$modulecontext = \context_module::instance($cm->id);
+$context = \context::instance_by_id($modulecontext->id);
 require_capability('mod/videoaula:view', $context);
 
 $PAGE->set_url('/mod/videoaula/view.php', ['id' => $cm->id]);
@@ -33,7 +37,7 @@ if (trim((string)$videoaula->intro) !== '') {
 
 echo $OUTPUT->notification(get_string('integrationready', 'videoaula'), \core\output\notification::NOTIFY_SUCCESS);
 echo $OUTPUT->single_button(
-    new moodle_url('/mod/videoaula/view.php', ['id' => $cm->id, 'createmeeting' => 1, 'sesskey' => sesskey()]),
+    new url('/mod/videoaula/view.php', ['id' => $cm->id, 'createmeeting' => 1, 'sesskey' => sesskey()]),
     get_string('createmeeting', 'videoaula')
 );
 

@@ -1,6 +1,10 @@
 <?php
 declare(strict_types=1);
 
+use core\output\html_writer;
+use core\url;
+use core_table\output\html_table;
+
 require('../../config.php');
 
 $id = required_param('id', PARAM_INT);
@@ -32,7 +36,7 @@ $table->head = [
 ];
 
 foreach ($instances as $instance) {
-    $url = new moodle_url('/mod/videoaula/view.php', ['id' => $instance->coursemodule]);
+    $url = new url('/mod/videoaula/view.php', ['id' => $instance->coursemodule]);
     $table->data[] = [
         html_writer::link($url, format_string($instance->name)),
         format_string((string)$instance->meetingtopic),

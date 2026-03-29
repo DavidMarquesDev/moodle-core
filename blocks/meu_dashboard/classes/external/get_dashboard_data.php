@@ -42,7 +42,8 @@ class get_dashboard_data extends external_api
         ['userid' => $userid] = self::validate_parameters(self::execute_parameters(), ['userid' => $userid]);
 
         require_login();
-        $context = context_system::instance();
+        $systemcontext = context_system::instance();
+        $context = \context::instance_by_id($systemcontext->id);
         self::validate_context($context);
 
         $targetuserid = $userid > 0 ? $userid : (int)$USER->id;

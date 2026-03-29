@@ -48,7 +48,8 @@ class get_recent_messages extends external_api
         ]);
 
         require_login();
-        $context = context_system::instance();
+        $systemcontext = context_system::instance();
+        $context = \context::instance_by_id($systemcontext->id);
         self::validate_context($context);
 
         $targetuserid = $userid > 0 ? $userid : (int)$USER->id;

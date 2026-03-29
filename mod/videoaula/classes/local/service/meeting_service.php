@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace mod_videoaula\local\service;
 
 use mod_videoaula\local\integration\zoom_client;
-use moodle_exception;
+use core\exception\moodle_exception;
 use stdClass;
 
 /**

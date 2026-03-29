@@ -39,7 +39,8 @@ class create_meeting extends external_api
         self::validate_parameters(self::execute_parameters(), ['cmid' => $cmid]);
 
         $cm = get_coursemodule_from_id('videoaula', $cmid, 0, false, MUST_EXIST);
-        $context = \context_module::instance($cm->id);
+        $modulecontext = \context_module::instance($cm->id);
+        $context = \context::instance_by_id($modulecontext->id);
         self::validate_context($context);
         require_capability('mod/videoaula:manage', $context);
 

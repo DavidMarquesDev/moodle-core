@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace mod_videoaula\local\integration;
 
-use moodle_exception;
+use core\exception\moodle_exception;
 
 /**
  * @author David <github.com/DavidMarquesDev>
