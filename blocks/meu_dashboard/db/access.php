@@ -5,20 +5,20 @@ defined('MOODLE_INTERNAL') || die();
 
 $capabilities = [
     'block/meu_dashboard:addinstance' => [
-        'riskbitmask' => RISK_SPAM | RISK_XSS,
+        'riskbitmask' => \RISK_SPAM | \RISK_XSS,
         'captype' => 'write',
-        'contextlevel' => CONTEXT_BLOCK,
+        'contextlevel' => \CONTEXT_BLOCK,
         'archetypes' => [
-            'editingteacher' => CAP_ALLOW,
-            'manager' => CAP_ALLOW,
+            'editingteacher' => \CAP_ALLOW,
+            'manager' => \CAP_ALLOW,
         ],
     ],
     'block/meu_dashboard:myaddinstance' => [
-        'riskbitmask' => RISK_SPAM | RISK_XSS,
+        'riskbitmask' => \RISK_SPAM | \RISK_XSS,
         'captype' => 'write',
-        'contextlevel' => CONTEXT_SYSTEM,
+        'contextlevel' => \CONTEXT_SYSTEM,
         'archetypes' => [
-            'user' => CAP_ALLOW,
+            'user' => \CAP_ALLOW,
         ],
     ],
 ];

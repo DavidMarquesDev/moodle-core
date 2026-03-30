@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace block_meu_dashboard\external;
 
 use block_meu_dashboard\local\factory\dashboard_service_factory;
-use context_system;
 use core_external\external_api;
 use core_external\external_function_parameters;
 use core_external\external_multiple_structure;
@@ -26,8 +25,8 @@ class get_messages_series extends external_api
     public static function execute_parameters(): external_function_parameters
     {
         return new external_function_parameters([
-            'userid' => new external_value(PARAM_INT, 'ID do usuário alvo', VALUE_DEFAULT, 0),
-            'perioddays' => new external_value(PARAM_INT, 'Período em dias', VALUE_DEFAULT, 30),
+            'userid' => new external_value(\PARAM_INT, 'ID do usuário alvo', \VALUE_DEFAULT, 0),
+            'perioddays' => new external_value(\PARAM_INT, 'Período em dias', \VALUE_DEFAULT, 30),
         ]);
     }
 
@@ -47,14 +46,14 @@ class get_messages_series extends external_api
             'perioddays' => $perioddays,
         ]);
 
-        require_login();
-        $systemcontext = context_system::instance();
+        \require_login();
+        $systemcontext = \context_system::instance();
         $context = \context::instance_by_id($systemcontext->id);
         self::validate_context($context);
 
         $targetuserid = $userid > 0 ? $userid : (int)$USER->id;
         if ($targetuserid !== (int)$USER->id) {
-            require_capability('moodle/user:viewdetails', $context);
+            \require_capability('moodle/user:viewdetails', $context);
         }
 
         $service = dashboard_service_factory::create();
@@ -69,8 +68,8 @@ class get_messages_series extends external_api
     {
         return new external_multiple_structure(
             new external_single_structure([
-                'day' => new external_value(PARAM_TEXT, 'Dia no formato YYYY-MM-DD'),
-                'count' => new external_value(PARAM_INT, 'Quantidade de mensagens'),
+                'day' => new external_value(\PARAM_TEXT, 'Dia no formato YYYY-MM-DD'),
+                'count' => new external_value(\PARAM_INT, 'Quantidade de mensagens'),
             ])
         );
     }
